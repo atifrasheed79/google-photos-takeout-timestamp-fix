@@ -25,7 +25,7 @@ def process_json_file(json_path, ext):
         date_time = datetime.fromtimestamp(int(modify_date_timestamp)).strftime("%Y:%m:%d %H:%M:%S")
         # Update image metadata        
         logging.debug("Using exif to update timestamp ", date_time,"of ", image_path)
-        exiftool_cmd = ['exiftool', '-j', '-overwrite_original', '-FileCreateDate=' + date_time, '-FileModifyDate=' + date_time, image_path]
+        exiftool_cmd = ['exiftool', '-overwrite_original', '-CreateDate=' + date_time, '-DateTimeOriginal=' + date_time, '-FileCreateDate=' + date_time, '-FileModifyDate=' + date_time, image_path]
         logging.info(exiftool_cmd)
         subprocess.run(exiftool_cmd)
 
